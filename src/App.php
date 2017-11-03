@@ -30,7 +30,15 @@ class App
             $query = new Query();
             $query->at('BoTotoBoToto');
 
-            $mentions = $twitter->search($query);
+            $file = new \SplFileObject(
+                __DIR__ . '/../ressources/lastRespondedId.txt'
+            );
+
+            $lastRespondedId = $file->getSize() > 0
+                ? (int)$file->fread($file->getSize())
+                : null;
+
+            $mentions = $twitter->search($query, $lastRespondedId);
 
             foreach ($mentions->statuses as $status) {
                 $id = $status->id;
@@ -38,7 +46,15 @@ class App
                 $song = new Song();
                 $response = 'What about some ' . $song->getTitle()
                     . '? :) ' . $song->getUrl();
-                $twitter->respond($response, $id, $at);
+                $lastTweet = $twitter->respond($response, $id, $at);
+                if(!property_exists($lastTweet, 'errors')) {
+                    $lastRespondedId = $lastTweet->id;
+                }
+            }
+
+            if($lastRespondedId !== null) {
+                $file = $file->openFile('w+');
+                $file->fwrite($lastRespondedId);
             }
 
             sleep(10);

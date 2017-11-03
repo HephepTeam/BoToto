@@ -17,23 +17,43 @@ class Twitter
         );
     }
 
+    /**
+     * @param string $tweet
+     */
     public function tweet(string $tweet)
     {
         $this->connection->post('statuses/update', ['status' => $tweet]);
     }
 
+    /**
+     * @param string $tweet
+     * @param int $tweetId
+     * @param string $at
+     * @return array|object
+     */
     public function respond(string $tweet, int $tweetId, string $at)
     {
-        $this->connection->post('statuses/update', [
+        return $this->connection->post('statuses/update', [
            'status' => '@' . $at . ' ' . $tweet,
            'in_reply_to_status_id' => $tweetId,
         ]);
     }
 
-    public function search(Query $query)
+    /**
+     * @param Query $query
+     * @param int|null $sinceId
+     * @return null|\stdClass
+     */
+    public function search(Query $query, int $sinceId = null): ?\stdClass
     {
-        return $this->connection->get('search/tweets', [
+        $params = [
             'q' => $query->build(),
-        ]);
+        ];
+
+        if($sinceId !== null) {
+            $params['since_id'] = $sinceId;
+        }
+
+        return $this->connection->get('search/tweets', $params);
     }
 }
