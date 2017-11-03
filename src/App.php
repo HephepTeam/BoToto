@@ -30,13 +30,16 @@ class App
             $query = new Query();
             $query->at('BoTotoBoToto');
 
-            $file = new \SplFileObject(
-                __DIR__ . '/../ressources/lastRespondedId.txt'
-            );
+            $lastRespondedId = null;
 
-            $lastRespondedId = $file->getSize() > 0
-                ? (int)$file->fread($file->getSize())
-                : null;
+            if(file_exists(__DIR__ . '/../ressources/lastRespondedId.txt')) {
+                $file = new \SplFileObject(
+                    __DIR__ . '/../ressources/lastRespondedId.txt'
+                );
+                $lastRespondedId = $file->getSize() > 0
+                    ? (int)$file->fread($file->getSize())
+                    : null;
+            }
 
             $mentions = $twitter->search($query, $lastRespondedId);
 
