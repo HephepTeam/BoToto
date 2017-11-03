@@ -26,7 +26,11 @@ class App
 
                 $time = $newTime;
             }
-            $mentions = $twitter->searchByMention('BoTotoBoToto');
+
+            $query = new Query();
+            $query->at('BoTotoBoToto');
+
+            $mentions = $twitter->search($query);
 
             foreach ($mentions->statuses as $status) {
                 $id = $status->id;

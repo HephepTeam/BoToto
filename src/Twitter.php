@@ -30,8 +30,10 @@ class Twitter
         ]);
     }
 
-    public function searchByMention($at)
+    public function search(Query $query)
     {
-        return $this->connection->get('search/tweets', ['q' => '@' . strtolower($at)]);
+        return $this->connection->get('search/tweets', [
+            'q' => $query->build(),
+        ]);
     }
 }
