@@ -39,6 +39,11 @@ class App
                 $lastRespondedId = $file->getSize() > 0
                     ? (int)$file->fread($file->getSize())
                     : null;
+            } else {
+                $file = new \SplFileObject(
+                    __DIR__ . '/../ressources/lastRespondedId.txt',
+                    'w+'
+                );
             }
 
             $mentions = $twitter->search($query, $lastRespondedId);
