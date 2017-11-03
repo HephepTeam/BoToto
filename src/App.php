@@ -26,6 +26,16 @@ class App
 
                 $time = $newTime;
             }
+            $mentions = $twitter->searchByMention('BoTotoBoToto');
+
+            foreach ($mentions->statuses as $status) {
+                $id = $status->id;
+                $at = $status->user->screen_name;
+                $song = new Song();
+                $response = 'What about some ' . $song->getTitle()
+                    . '? :) ' . $song->getUrl();
+                $twitter->respond($response, $id, $at);
+            }
 
             sleep(10);
         }

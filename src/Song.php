@@ -20,4 +20,14 @@ class Song
     {
         return $this->title . ' ♫ ' . $this->url;
     }
+
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    public function getUrl()
+    {
+        return $this->url;
+    }
 }

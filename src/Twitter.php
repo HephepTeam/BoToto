@@ -21,4 +21,17 @@ class Twitter
     {
         $this->connection->post('statuses/update', ['status' => $tweet]);
     }
+
+    public function respond(string $tweet, int $tweetId, string $at)
+    {
+        $this->connection->post('statuses/update', [
+           'status' => '@' . $at . ' ' . $tweet,
+           'in_reply_to_status_id' => $tweetId,
+        ]);
+    }
+
+    public function searchByMention($at)
+    {
+        return $this->connection->get('search/tweets', ['q' => '@' . strtolower($at)]);
+    }
 }
