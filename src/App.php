@@ -22,8 +22,8 @@ class App
                     $twitter->tweet((string)mt_rand());
                 }
 
-                $time = $newTime
-                }
+                $time = $newTime;
+            }
 
             sleep(10);
         }
