@@ -1,4 +1,4 @@
 vendor
-src/BoToto/config/*.php
+src/config/config.php
 .idea
 *.phar
