@@ -15,11 +15,13 @@ class App
             $hour = (int)date('H');
 
             if ($newTime - $time >= 3600) {
-                if ($rand > 7
+                echo $rand;
+                if ($rand > 6
                     && $hour > 9
                     && $hour < 23
                 ) {
-                    $twitter->tweet((string)mt_rand());
+                    $song = new Song();
+                    $twitter->tweet($song->getTweet());
                 }
 
                 $time = $newTime;
