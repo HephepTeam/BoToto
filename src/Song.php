@@ -10,7 +10,7 @@ class Song
 
     public function __construct()
     {
-        $songlist = require __DIR__ . '/config/songlist.php';
+        $songlist = require __DIR__ . '/../ressources/songlist.php';
 
         $this->title = array_rand($songlist);
         $this->url = $songlist[$this->title];

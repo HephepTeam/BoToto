@@ -54,6 +54,7 @@ class App
                 $song = new Song();
                 $response = 'What about some ' . $song->getTitle()
                     . '? :) ' . $song->getUrl();
+
                 $lastTweet = $twitter->respond($response, $id, $at);
                 if(!property_exists($lastTweet, 'errors')) {
                     $lastRespondedId = $lastTweet->id;
