@@ -23,8 +23,8 @@ function config($key) {
 $app = new App();
 
 try {
-    fwrite(STDOUT, 'Launching now ^_^');
+    $app->log('Launching now ^_^');
     $app->launch();
 } catch(\Exception $e) {
-    fwrite(STDERR, $e);
+    $app->errLog($e);
 }

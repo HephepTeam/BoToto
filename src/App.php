@@ -23,8 +23,7 @@ class App
             $hour = (int)date('H');
 
             if ($newTime - $time >= 3600) {
-                fwrite(
-                    STDOUT,
+                $this->log(
                     'Rand is: '
                         . $rand
                         . ' '
@@ -66,8 +65,7 @@ class App
                 $id = $status->id;
                 $at = $status->user->screen_name;
                 $song = new Song();
-                fwrite(
-                    STDOUT,
+                $this->log(
                     'Responding to '
                         . $at
                         . '#'
@@ -91,5 +89,16 @@ class App
 
             sleep(60);
         }
+    }
+
+    public function log(string $message, bool $err = false)
+    {
+        $log = new Log($message, $err);
+        $log->log();
+    }
+
+    public function errLog(string $message)
+    {
+        $this->log($message, true);
     }
 }

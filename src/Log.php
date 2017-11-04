@@ -18,35 +18,29 @@ class Log
 
     protected $time;
 
+    protected $std;
+
     /**
      * Log constructor.
      * @param string $message
+     * @param bool $err
      */
-    public function __construct(string $message)
+    public function __construct(string $message, $err = false)
     {
         $this->message = $message;
         $this->time = Carbon::now()->toDateTimeString();
+        if ($err) {
+            $this->std = STDERR;
+        } else {
+            $this->std = STDOUT;
+        }
     }
 
-    /**
-     * @param bool $err
-     */
-    public function log(bool $err = false)
+    public function log()
     {
-        if ($err) {
-            $std = STDERR;
-        } else {
-            $std = STDOUT;
-        }
-
         fwrite(
-            $std,
+            $this->std,
             '[' . $this->time. '] ' . $this->message . "\n"
         );
-    }
-
-    public function errLog()
-    {
-        $this->log(true);
     }
 }
