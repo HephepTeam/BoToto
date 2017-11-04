@@ -66,7 +66,7 @@ class App
                 $file->fwrite($lastRespondedId);
             }
 
-            sleep(10);
+            sleep(60);
         }
     }
 }
