@@ -1,0 +1,6 @@
+[program:bototo]
+command=php /home/jules/BoToto/public/main.php
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/bototo.err.log
+stdout_logfile=/var/log/bototo.out.log

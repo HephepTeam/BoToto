@@ -1,5 +1,6 @@
 vendor
 src/config/config.php
+supervisor/config/*.conf
 .idea
 *.phar
 lastRespondedId.txt
