@@ -12,4 +12,7 @@ return [
     'I will remember' => 'https://youtu.be/_Y2qfmjCmCw',
     'Georgy Porgy' => 'https://youtu.be/7CQpvc8quQ8',
     'I’ll supply the love' => 'https://youtu.be/nzaeKM9-2Qg',
+    'Holyanna' => 'https://youtu.be/G01ClDIVhDY',
+    'Stop Loving You' => 'https://youtu.be/bYr3OJOXk60',
+    'I’ll Be Over You' => 'https://youtu.be/r7XhWUDj-Ts',
 ];
