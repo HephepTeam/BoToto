@@ -15,7 +15,13 @@ class App
             $hour = (int)date('H');
 
             if ($newTime - $time >= 3600) {
-                echo $rand;
+                fwrite(
+                    STDOUT,
+                    'Rand is: '
+                        . $rand
+                        . ' '
+                        . ($rand > 6 ? 'Throwing a SONG !' : 'No song :(')
+                );
                 if ($rand > 6
                     && $hour > 9
                     && $hour < 23
@@ -52,6 +58,15 @@ class App
                 $id = $status->id;
                 $at = $status->user->screen_name;
                 $song = new Song();
+                fwrite(
+                    STDOUT,
+                    'Responding to '
+                        . $at
+                        . '#'
+                        . $id
+                        .' with '
+                        . $song->getTitle()
+                );
                 $response = 'What about some ' . $song->getTitle()
                     . '? :) ' . $song->getUrl();
 
