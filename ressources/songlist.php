@@ -7,4 +7,8 @@ return [
     'Hydra' => 'https://youtu.be/DS_-j7tv_MQ',
     'Stranger In Town' => 'https://youtu.be/RSeldKAqM-w',
     'Rosanna' => 'https://youtu.be/qmOLtTGvsbM',
+    'Pamela' => 'https://youtu.be/JB1c4_4tbxo',
+    'I will remember' => 'https://youtu.be/_Y2qfmjCmCw',
+    'Georgy Porgy' => 'https://youtu.be/7CQpvc8quQ8',
+    'I’ll supply the love' => 'https://youtu.be/nzaeKM9-2Qg',
 ];
