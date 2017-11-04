@@ -13,4 +13,9 @@ function config($key) {
 
 $app = new App();
 
-$app->launch();
+try {
+    $app->launch();
+    fwrite(STDOUT, 'I\'m running ^_^');
+} catch(\Exception $e) {
+    fwrite(STDERR, $e);
+}
