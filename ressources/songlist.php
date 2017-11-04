@@ -7,4 +7,5 @@ return [
     'Hydra' => 'https://youtu.be/DS_-j7tv_MQ',
     'Stranger In Town' => 'https://youtu.be/RSeldKAqM-w',
     'Rosanna' => 'https://youtu.be/qmOLtTGvsbM',
+    'Hold the line' => 'https://youtu.be/8mkmUdUYgH0',
 ];
